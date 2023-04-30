@@ -35,7 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_maps_flutter: ^2.1.1
-  geolocator: ^8.1.1
+  geolocator: ^8.1.1 # 위치 관련. 이를 통해 현재 위치의 위도 경도, 어떤 위치 기준으로 몇미터인지 등을 구할 수 있음
 
 dev_dependencies:
   flutter_test:
