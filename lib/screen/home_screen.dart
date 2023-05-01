@@ -215,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
             //-- getPositionStream을 사용하게 되면 지속적으로 가져올 수 있는 로직(위에서 StreamBuilder 안에서 사용하기도 했다)
             //-- 내 위치를 구글맵에 보여주기 위한 로직을 구현하고있기
 
-            mapController!.animateCamera(
+            mapController!.animateCamera( //-- 바로 여기서 mapController를 사용하기 위해 최상위 (StatefulWidget)에서 mapController를 전역변수화 했다.
               CameraUpdate.newLatLng(
                 LatLng(
                   location.latitude,
@@ -262,8 +262,8 @@ class _CustomGoogleMap extends StatelessWidget {
         myLocationButtonEnabled: false, //-- 내 위치 바로가기 버튼 유무(안드로이드는 default로 false 상태)
         circles: Set.from([circle]),
         markers: Set.from([marker]),
-        onMapCreated: onMapCreated, //-- (A) 부분에 이어서 설명 > onMapCrated 파라미터를 통해 GoogleMap이 생성되었을때 여기서 controller를 받을 수 있다. 이때 컨트롤러를 나중에 또 쓸수있도록 저장하면된다는 것을 알 수 있다.
-        //-- 그런데 여기서 또, '상태관리'는 역시 최상위에서 계속 하고있기 때문에 onMapCreated 파라미터를 외부에서 받는 방식으로 구현하였다. (카메라위치애니메이션으로이동하기1:40)
+        onMapCreated: onMapCreated, //-- (A) 부분에 이어서 설명 > onMapCrated 파라미터를 통해 GoogleMap이 생성되었을때 여기서 controller를 받을 수 있다. 이때 컨트롤러를 다른 위젯에서도 사용할 수 있도록 최상위(StatefulWidget 안)에서
+        //-- 전역변수화 하는 로직이 되어야 하겠고, 이에 따라 onMapCreated 또한 최상위(StatefulWidget 안)에서 구체화 되었다. (카메라위치애니메이션으로이동하기1:40)
         //-- 구글맵 컨트롤러를 통해서, 변하는 위치를 계속적으로 렌더링해야하는데
         //-- 그 컨트롤러를 사용하기위해 구글맵을 처음에 create될때 컨트롤러를 받아서 전역변수(?)에 담는 로직
       ),

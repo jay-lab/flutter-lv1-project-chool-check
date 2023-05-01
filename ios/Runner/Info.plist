@@ -47,5 +47,9 @@
     <string>위치정보가 필요합니다.</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>위치정보가 필요합니다.</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>
